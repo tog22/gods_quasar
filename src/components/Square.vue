@@ -1,7 +1,8 @@
 <template>
 	<td :class="square_class" v-on:click="click">
-		<div :class="occupant_class">
-			{{occupant_image}}
+		<div>
+			<span v-html="occupant_image">
+			</span>
 		</div>
 	</td>
 </template>
@@ -28,7 +29,19 @@
 			}
 		},
 		data() {
+			
+			let occupant_image = ''
+			if (this.square.side === 1 & this.square.occupant === 'mortal') {
+				occupant_image = '<img class="oi" src="/images/monk_blue.png" />'
+			} else if (this.square.side === 1 & this.square.occupant === 'angel') {
+				occupant_image = '<img class="oi" src="/images/prophet_blue.png" />'
+			} else if (this.square.side === 2 & this.square.occupant === 'mortal') {
+				occupant_image = '<img class="oi" src="/images/monk_red.png" />'
+			} else if (this.square.side === 2 & this.square.occupant === 'angel') {
+				occupant_image = '<img class="oi" src="/images/prophet_red.png" />'
+			}
 			return {
+				occupant_image: 	occupant_image
 			};
 		},
 		computed: {
@@ -62,18 +75,6 @@
 				}
 				return ret;
 			},
-			occupant_image: function() {
-				let ret = '';
-				switch (this.square.side) {
-					case 1:
-						ret = '🐒';
-						break;
-					case 2:
-						ret = '🦛';
-						break;
-				}
-				return ret;
-			}
 		},
 		methods: {
 			click: function() {

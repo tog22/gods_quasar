@@ -412,6 +412,10 @@ h1 {
 	padding-bottom: 5px;
 }
 
+.oi {
+	height: 75px;
+}
+
 .player_pulse {
 	animation: player_pulse 4s ease-in-out 1 0s;
 	animation-iteration-count: 100;
