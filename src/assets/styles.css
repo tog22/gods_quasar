@@ -412,8 +412,27 @@ h1 {
 	padding-bottom: 5px;
 }
 
+.cpi.blue,
+.cpi.red {
+	display: inline-block;
+	height: 25px;
+	position: relative;
+	top: 2px;
+	width: 25px
+}
+
+.cpi.red {
+	background-color: #971201
+}
+
+.cpi.blue {
+	background-color: #061d98
+}
+
 .oi {
-	height: 75px;
+	height: 43px;
+    position: relative;
+    top: 2px;
 }
 
 .player_pulse {
