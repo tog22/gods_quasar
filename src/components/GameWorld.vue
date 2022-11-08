@@ -118,7 +118,8 @@ export default {
 				// Re-clicking the selected piece, to unselect it
 
 				if (to_row === from_row && to_col === from_col) {
-					this.unselect_piece();
+					this.unselect_piece()
+					return
 				}
 
 
@@ -1642,9 +1643,9 @@ export default {
 		current_player_image: function() {
 			switch (this.current_player) {
 				case 1:
-					return '<span class="cpi baboon player_pulse">🐒</span>';
+					return '<span class="cpi blue"></span>';
 				case 2:
-					return '<span class="cpi hippo">🦛</span>';
+					return '<span class="cpi red"></span>';
 				default:
 					return 'Unset: this.current_player'
 			}

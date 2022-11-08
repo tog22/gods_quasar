@@ -1,6 +1,14 @@
 /***********************************/
 /* !RESET QUASAR STYLES TO DEFAULT
+/*
+/*            v1.1
+/*
 /***********************************/
+
+// Disabled for Gods, might be used for other quasar stuff
+*, :after, :before {
+  box-sizing: initial;
+}
 
 h1, h2, h3, h4, h5, h6 {
     font-weight: bold;

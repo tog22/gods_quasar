@@ -28,22 +28,6 @@
 				default: ''
 			}
 		},
-		data() {
-			
-			let occupant_image = ''
-			if (this.square.side === 1 & this.square.occupant === 'mortal') {
-				occupant_image = '<img class="oi" src="/images/monk_blue.png" />'
-			} else if (this.square.side === 1 & this.square.occupant === 'angel') {
-				occupant_image = '<img class="oi" src="/images/prophet_blue.png" />'
-			} else if (this.square.side === 2 & this.square.occupant === 'mortal') {
-				occupant_image = '<img class="oi" src="/images/monk_red.png" />'
-			} else if (this.square.side === 2 & this.square.occupant === 'angel') {
-				occupant_image = '<img class="oi" src="/images/prophet_red.png" />'
-			}
-			return {
-				occupant_image: 	occupant_image
-			};
-		},
 		computed: {
 			square_class: function() {
 				let ret = '';
@@ -75,6 +59,19 @@
 				}
 				return ret;
 			},
+			occupant_image: function() {
+				let occupant_image = ''
+				if (this.square.side === 1 & this.square.occupant === 'mortal') {
+					occupant_image = '<img class="oi" src="/images/monk_blue.png" />'
+				} else if (this.square.side === 1 & this.square.occupant === 'angel') {
+					occupant_image = '<img class="oi" src="/images/prophet_blue.png" />'
+				} else if (this.square.side === 2 & this.square.occupant === 'mortal') {
+					occupant_image = '<img class="oi" src="/images/monk_red.png" />'
+				} else if (this.square.side === 2 & this.square.occupant === 'angel') {
+					occupant_image = '<img class="oi" src="/images/prophet_red.png" />'
+				}
+				return occupant_image
+			}
 		},
 		methods: {
 			click: function() {

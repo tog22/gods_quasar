@@ -396,7 +396,7 @@ h1 {
 }
 
 #info_bar .current_player.s_item {
-	
+	padding: 3px 8px;
 }
 
 .cpi.baboon {
@@ -412,8 +412,27 @@ h1 {
 	padding-bottom: 5px;
 }
 
+.cpi.red,
+.cpi.blue {
+	display: inline-block;
+	width: 25px;
+    height: 25px;
+    position: relative;
+    top: 2px;
+}
+
+.cpi.red {
+	background-color: #971201;
+}
+
+.cpi.blue {
+	background-color: #061D98;
+}
+
 .oi {
-	height: 75px;
+	height: 43px;
+	position: relative;
+	top: 2px;
 }
 
 .player_pulse {
