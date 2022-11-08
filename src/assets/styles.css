@@ -13,11 +13,11 @@
 
 body {
 	background-color: white;
-	
+
 	font-family: Raleway, Avenir, Helvetica, Arial, sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
-	
+
 	margin: 8px; /* default */
 }
 
@@ -37,40 +37,40 @@ body {
 		height: auto;
 		margin: 0 auto;
 	}
-	
+
 }
 
 @media screen and ( max-width: 767px ) and (hover: none) {
 	html {
 		height: 100%;
 	}
-	
+
 	body {
 		margin: 0;
 		display: flex;
 		flex-direction: column;
 		height: 100%;
 	}
-	
+
 	#app {
 		flex-grow: 1;
-		
+
 		display: flex;
 	}
-	
+
 	.game_world_root {
 		flex-grow: 1;
-		
+
 		display: flex;
 		/* justify-content: flex-start; */
 	}
-	
+
 	.screen {
 		flex-grow: 1;
-		
+
 		display: flex;
 		flex-direction: column;
-		
+
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
@@ -84,10 +84,10 @@ body {
 
 .mob_style .screen {
 	flex-grow: 1;
-	
+
 	display: flex;
 	flex-direction: column;
-	
+
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -127,7 +127,7 @@ body {
 .show_menu #end_game,
 .show_selecting_online #end_game,
 .show_online #end_game,
-.show_pnp #end_game 
+.show_pnp #end_game
 
 {
 	display: none
@@ -174,7 +174,7 @@ body {
 		border: 1.1vw solid black;
 		line-height: 1em;
 	}
-	
+
 }
 
 /**************************/
@@ -265,7 +265,7 @@ body {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	
+
 	background-color: #A7C4E0;
 	background-color: var(--dark-blue);
 	height: 40px;
@@ -286,20 +286,20 @@ body {
 	.menu_bar {
 		height: 6vh;
 	}
-	
+
 	.menu_bar .s_left,
 	.menu_bar .s_right {
 		width: 10vw;
 	}
-	
+
 	h1 {
 		font-size: 5vw;
 	}
-	
+
 	.back {
 		padding-left: 3.5vw;
 	}
-	
+
 }
 
 h1 {
@@ -309,7 +309,7 @@ h1 {
 	font-size: 20px;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: auto;
-	
+
 }
 
 /**************************/
@@ -337,11 +337,11 @@ h1 {
 #info_bar {
 	display: flex;
 	align-items: center;
-	
+
 	text-align: center;
 	margin-top: 1em;
 	width: 100%;
-	
+
 	background: #7c98b3;
 	border-radius: 12px;
 	padding: 20px;
@@ -371,12 +371,12 @@ h1 {
 	border-radius: 6px;
 	height: 40px;
 	padding: 3px 6px;
-	
+
 	display: flex;
 	justify-content: center;
 	align-content: center;
 	flex-direction: column;
-	
+
 	color: white;
 }
 
@@ -407,22 +407,23 @@ h1 {
 .cpi.hippo {
 	font-size: 170%;
 	margin-right: 2px;
-	
+
 	display: inline-block;
 	padding-bottom: 5px;
 }
 
-.cpi.red,
-.cpi.blue {
+
+.cpi.blue,
+.cpi.red {
 	display: inline-block;
-	width: 25px;
-    height: 25px;
-    position: relative;
-    top: 2px;
+	height: 25px;
+	position: relative;
+	top: 2px;
+	width: 25px
 }
 
 .cpi.red {
-	background-color: #971201;
+	background-color: #971201
 }
 
 .cpi.blue {
@@ -447,19 +448,19 @@ GameWorld.vue changes are at https://github.com/tog22/gods_vue/commit/f14faff612
 
 #info_bar .s_item {
 	display: inline-block;
-	
+
 	display: flex;
 	justify-content: center;
 	align-content: center;
 	flex-direction: column;
-	
+
 	color: white;
 }
 
 #info_bar .s_item .s_rounded {
 	display: table-cell;
 	vertical-align: middle;
-	
+
 	background-color: #A7C4E0;
 	margin-right: 15px;
 	border-radius: 6px;
@@ -553,11 +554,11 @@ $("#info_bar .current_player.s_item").on(
 
 #inner_selecting_online {
 	flex-grow: 1;
-	
+
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	
+
 	padding: 20px 5% 80px;
 }
 
@@ -603,12 +604,12 @@ $("#info_bar .current_player.s_item").on(
 	 /* text-shadow: 0px 0px 10px rgba(0,0,0,0.2);*/
 	box-shadow: 0 0 20px #eee;
 	border-radius: 10px;
-	
+
 	color: white;
 	font-weight: bold;
 	font-size: 22px;
 }
-	
+
 .button:hover {
 	background-position: right center;
 }
@@ -622,7 +623,7 @@ $("#info_bar .current_player.s_item").on(
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	
+
 }
 
 #victory {
@@ -648,3 +649,17 @@ $("#info_bar .current_player.s_item").on(
 	text-transform: uppercase;
 }
 
+/**************************/
+/* ONLINE SIMULATOR
+/**************************/
+
+/* ==========================================================================
+/* Online Simulator
+*/
+
+
+@media (hover:none), (hover:on-demand) {
+	#online_simulator {
+		display: none;
+	}
+}

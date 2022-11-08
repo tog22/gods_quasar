@@ -786,6 +786,8 @@ export default {
 
 			let get_url = 'http://gods.philosofiles.com/godcloud/?action=update&game='+this.online.game_id+'&pw='+this.online.game_pass+'&turn='+this.turn+'&current_player='+this.current_player+'&winner='+this.winner+'&win_type='+this.win_type+'&sotw='+JSON.stringify(this.sotw);
 
+			lo(get_url)
+
 			server_request.open("GET", get_url, false) // false = synchronous
 			server_request.send()
 			lo('response to ?update:')
@@ -847,9 +849,9 @@ export default {
 				this.check_for_trap(move.inspiration.from_row, move.inspiration.from_col)
 				this.check_for_reaching_heartland(to_for_inspiration)
 
-			}
+				}
 
-			if (move.piece) {
+				if (move.piece) {
 
 				/* ↓  NB: Don't use same let name
 							in these 2 if blocks, because in Vue specifically the let name persists, and then becomes undefined in the 2nd if statement
@@ -862,8 +864,44 @@ export default {
 				to_for_move.side = move.piece.side
 				this.check_for_trap(move.piece.from_row, move.piece.from_col)
 
+				}
+				this.end_turn(null, 'by_opponent')
+			/* JSON version:
+			// Make the move
+
+			if (move.inspiration) {
+
+				/* ↓  NB: Don't use same let name
+							in these 2 if blocks, because in Vue specifically the let name persists, and then becomes undefined in the 2nd if statement
+				*//*
+				let from_for_inspiration = this.sotw[move.inspiration.from_row][move.inspiration.from_col]
+				let to_for_inspiration = this.sotw[move.inspiration.to_row][move.inspiration.to_col]
+				from_for_inspiration.divinely_inspired = false
+				to_for_inspiration.divinely_inspired = true
+
+				// Maybe have move sender send the results:
+
+				this.check_for_trap(move.inspiration.from_row, move.inspiration.from_col)
+				this.check_for_reaching_heartland(to_for_inspiration)
+
+			}
+
+			if (move.piece) {
+
+				/* ↓  NB: Don't use same let name
+							in these 2 if blocks, because in Vue specifically the let name persists, and then becomes undefined in the 2nd if statement
+				*//*
+				let from_for_move = this.sotw[move.piece.from_row][move.piece.from_col]
+				let to_for_move = this.sotw[move.piece.to_row][move.piece.to_col]
+				from_for_move.occupant = null
+				from_for_move.side = null
+				to_for_move.occupant = move.piece.type
+				to_for_move.side = move.piece.side
+				this.check_for_trap(move.piece.from_row, move.piece.from_col)
+
 			}
 			this.end_turn(null, 'by_opponent')
+			*/
 
 		},
 
@@ -1633,7 +1671,7 @@ export default {
 				col_delta: 				null,
 				winner:					null,
 				win_type: 				null,
-				online_game:			false, // this.online_screen (…was my comment, do I mean to base it on this?)
+				online_game:			true, // this.online_screen (…was my comment, do I mean to base it on this?)
 				sotw: 					sotw,
 			};
 		}

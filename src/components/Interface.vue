@@ -14,10 +14,6 @@
 				</h1>
 			</div>
 			<div class="s_right">
-				<span class="testbtn"
-				@click="test_move_msg">
-					➡️
-				</span>
 			</div>
 		</div>
 		<GameWorld :online_screen="0" />
@@ -35,10 +31,6 @@
 				</h1>
 			</div>
 			<div class="s_right">
-				<span class="testbtn"
-				@click="test_move_msg">
-					➡️
-				</span>
 			</div>
 		</div>
 		<GameWorld v-if="which_screen === 'show_online'" :online_screen="1" :online="online" />
@@ -83,10 +75,6 @@
 				</h1>
 			</div>
 			<div class="s_right">
-				<span class="testbtn"
-				@click="test_move_msg">
-					➡️
-				</span>
 			</div>
 		</div>
 		<div id="inner_selecting_online">
@@ -497,7 +485,7 @@ export default {
 	},
 	data() {
 		return {
-			which_screen: 'show_pnp',
+			which_screen: 'show_online',
 			// ↑ Options: show_menu/show_selecting_online/show_online/show_pnp/show_end
 			game_type: 'pnp', // pnp/online
 			win_type: null,
@@ -506,9 +494,12 @@ export default {
 			online: {
 				user: 'Tomek', // Tomek/logging_in/etc
 				userpass: 'pass',
-				game_id: null,
-				game_pass: null,
-				side: null,
+				game_id: 22,
+				game_pass: 10559,
+				side: 1,
+				// game_id: null,
+				// game_pass: null,
+				// side: null,
 				subscreen: 'user menu', // default = 'user menu'
 				error: '',
 				login_error: null,
