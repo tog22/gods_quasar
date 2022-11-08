@@ -42,7 +42,7 @@ export default defineComponent({
 		lo(vapid_token)
 		
 		firebase_messaging.onMessage((message) => {
-			console.log('gggfdgfgffgggfgdfggf')
+			console.log('📨 Message received')
 			let msg_body = fcm_body_to_object(message.notification.body)
 			/* Example message to send:
 			

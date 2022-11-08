@@ -648,3 +648,17 @@ $("#info_bar .current_player.s_item").on(
 	text-transform: uppercase;
 }
 
+/**************************/
+/* ONLINE SIMULATOR
+/**************************/
+
+/* ==========================================================================
+/* Online Simulator
+*/
+
+
+@media (hover:none), (hover:on-demand) {
+	#online_simulator {
+		display: none;
+	}
+}

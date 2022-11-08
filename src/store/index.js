@@ -5,7 +5,7 @@ const STATE_NAME = "gods_datastore";
 var store_parent // What'll get exported
 
 const default_state = {
-	
+	"logged_in": false
 }
 
 const getdefault_state = () => {

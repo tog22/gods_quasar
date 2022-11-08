@@ -8,6 +8,7 @@ const routes = [
       // { path: '/home', component: () => import('pages/Index.vue') },
       { path: '/', component: () => import('pages/Single_Page.vue') },
       { path: '/home', component: () => import('pages/Single_Page.vue') },
+      { path: '/selecting_online', component: () => import('pages/Online_Selection.vue') },
       { path: '/howto', component: () => import('pages/Howto.vue') },
       { path: '/settings', component: () => import('pages/Settings.vue') },
     ]
