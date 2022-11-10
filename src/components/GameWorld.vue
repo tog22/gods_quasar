@@ -813,6 +813,32 @@ export default {
 
 		},
 
+		get_game_state(game_id, game_pass) {
+
+			var server_request = new XMLHttpRequest()
+
+			let get_url = 'http://gods.philosofiles.com/godcloud/?action=get&game='+game_id+'&pw='+game_pass
+
+			server_request.open("GET", get_url, false) // false = synchronous
+			server_request.send()
+
+			const response = JSON.parse(server_request.responseText)
+
+			this.turn = response.turn
+			this.current_player = response.current_player
+			this.sotw = response.sotw
+
+		},
+
+		on_fcm_update_received(update) {
+			
+			let game_id = update.game_id
+			let game_pass = update.game_pass
+
+			this.get_game_state(game_id, game_pass)
+
+		},
+
 		on_update_received(update) {
 
 			lo('u=')
@@ -830,8 +856,10 @@ export default {
 
 		},
 
+		// ↓ Not used
 		on_move_received(move) {
 
+			
 			// Make the move
 
 			if (move.inspiration) {
@@ -866,42 +894,6 @@ export default {
 
 				}
 				this.end_turn(null, 'by_opponent')
-			/* JSON version:
-			// Make the move
-
-			if (move.inspiration) {
-
-				/* ↓  NB: Don't use same let name
-							in these 2 if blocks, because in Vue specifically the let name persists, and then becomes undefined in the 2nd if statement
-				*//*
-				let from_for_inspiration = this.sotw[move.inspiration.from_row][move.inspiration.from_col]
-				let to_for_inspiration = this.sotw[move.inspiration.to_row][move.inspiration.to_col]
-				from_for_inspiration.divinely_inspired = false
-				to_for_inspiration.divinely_inspired = true
-
-				// Maybe have move sender send the results:
-
-				this.check_for_trap(move.inspiration.from_row, move.inspiration.from_col)
-				this.check_for_reaching_heartland(to_for_inspiration)
-
-			}
-
-			if (move.piece) {
-
-				/* ↓  NB: Don't use same let name
-							in these 2 if blocks, because in Vue specifically the let name persists, and then becomes undefined in the 2nd if statement
-				*//*
-				let from_for_move = this.sotw[move.piece.from_row][move.piece.from_col]
-				let to_for_move = this.sotw[move.piece.to_row][move.piece.to_col]
-				from_for_move.occupant = null
-				from_for_move.side = null
-				to_for_move.occupant = move.piece.type
-				to_for_move.side = move.piece.side
-				this.check_for_trap(move.piece.from_row, move.piece.from_col)
-
-			}
-			this.end_turn(null, 'by_opponent')
-			*/
 
 		},
 
@@ -1661,7 +1653,7 @@ export default {
 			}
 
 			return {
-				turn: 					1,
+				turn: 					turn,
 				current_player: 		current_player,
 				piece_has_moved: 		false,
 				inspiration_has_moved: 	false,
@@ -1728,7 +1720,7 @@ export default {
 
 		bus.on('move', (move) => {
 
-			this.on_move_received(move)
+			this.on_fcm_update_received(move)
 
 		});
 
