@@ -497,7 +497,7 @@ export default {
 
 
 		return {
-			which_screen: 'show_pnp',
+			which_screen: 'show_online',
 			// ↑ Options: show_menu/show_selecting_online/show_online/show_pnp/show_end
 			game_type: 'pnp', // pnp/online
 			win_type: null,
