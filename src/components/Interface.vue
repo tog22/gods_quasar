@@ -484,8 +484,20 @@ export default {
 		}
 	},
 	data() {
+		
+		/*****************
+		**  TO CHANGE:  **
+
+		(unsure if right)
+
+		Just change which_screen
+
+		
+		****************/
+
+
 		return {
-			which_screen: 'show_online',
+			which_screen: 'show_pnp',
 			// ↑ Options: show_menu/show_selecting_online/show_online/show_pnp/show_end
 			game_type: 'pnp', // pnp/online
 			win_type: null,

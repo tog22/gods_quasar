@@ -14,14 +14,16 @@
 			</tr>
 		</table>
 		<div id="bottom_zone">
-			<div id="info_bar">
-				<div id="item_flex_container">
-					<div class="current_player s_item">
-						<span v-html="current_player_image"></span>
-					</div>
-					<div class="next_turn s_item s_text_only" @click="end_turn">
-						<div class="s_text">
-							End Turn
+			<div id="bz_content">
+				<div id="info_bar">
+					<div id="item_flex_container">
+						<div class="current_player s_item">
+							<span v-html="current_player_image"></span>
+						</div>
+						<div class="next_turn s_item s_text_only" @click="end_turn">
+							<div class="s_text">
+								End Turn
+							</div>
 						</div>
 					</div>
 				</div>
@@ -916,6 +918,7 @@ export default {
 				var server_request = new XMLHttpRequest()
 
 				let get_url = 'http://gods.philosofiles.com/godcloud/?action=get&game='+this.online.game_id+'&pw='+this.online.game_pass
+				lo(get_url)
 
 				server_request.open("GET", get_url, false) // false = synchronous
 				server_request.send()
@@ -1663,7 +1666,7 @@ export default {
 				col_delta: 				null,
 				winner:					null,
 				win_type: 				null,
-				online_game:			true, // this.online_screen (…was my comment, do I mean to base it on this?)
+				online_game:			this.online_screen,
 				sotw: 					sotw,
 			};
 		}
