@@ -5,27 +5,38 @@
 			Simulate online player
 		</h2>
 		<h3>
-			Opponent's phone triggering FCM
+			FCM move
 		</h3>
 		<div id="online_simulator">
 			<p>
-				<button @click="opponent_fcm_test('74to64')">
+				<button @click="fcm_move('74to64')">
 					7-4 ↑ 6-4 [from start]
 				</button>
 			</p>
 			<p>
-				<button @click="opponent_fcm_test('64to74')">
+				<button @click="fcm_move('64to74')">
 					6-4 ↓ 7-4
-				</button>
-			</p>
-			<p>
-				<button @click="log_sotw">
-					Log SOTW
 				</button>
 			</p>
 		</div>
 		<h3>
 			Direct move (not via FCM)
+		</h3>
+		<div id="online_simulator">
+			<p>
+				<button @click="direct_move_2('74to64')">
+					7-4 ↑ 6-4 [from start]
+				</button>
+			</p>
+			<p>
+				<button @click="direct_move_2('64to74')">
+					6-4 ↓ 7-4
+				</button>
+			</p>
+		</div>
+		<!--
+		<h3>
+			Alt Direct move (not via FCM)
 		</h3>
 		<div id="online_simulator">
 			<p>
@@ -38,13 +49,7 @@
 					6-4 ↓ 7-4
 				</button>
 			</p>
-			<p>
-				<button @click="log_sotw">
-					Log SOTW
-				</button>
-			</p>
 		</div>
-		<!--
 		<h3>
 			Direct move (not via FCM)
 		</h3>
@@ -69,13 +74,13 @@
 					6-4 ↓ 7-4
 				</button>
 			</p>
-			<p>
-				<button @click="log_sotw">
-					Log SOTW
-				</button>
-			</p>
 		</div>
-	-->
+		-->
+		<p>
+			<button @click="log_sotw">
+				Log SOTW
+			</button>
+		</p>
 	</div>
 </template>
 
@@ -114,7 +119,36 @@ export default {
 			bus.emit('move', move_info)
 		},
 
-		opponent_fcm_test(move) {
+		fcm_move(move) {
+			// 1) Without updating SOTW in our GameWorld, simulate the other player updating it
+			if (move === '64to74') {
+				this.send_turn(_64to74)
+			} else if (move === '74to64') {
+				this.send_turn(_74to64)
+			}
+
+			// 2) Send the FCM message, just like GodCloud currently sends it
+
+			bus.emit('move', {"game_id": 22, "game_pass": 10559, "current_player":	1})
+
+		},
+
+		send_turn(sotw) {
+
+			var server_request = new XMLHttpRequest()
+
+			let get_url = 'http://gods.philosofiles.com/godcloud/?action=update&game=22&pw=10559&turn=3&current_player=1&winner=null&win_type=null&sotw='+JSON.stringify(sotw);
+
+			lo(get_url)
+
+			server_request.open("GET", get_url, false) // false = synchronous
+			server_request.send()
+			lo('response to ?update:')
+			lo(server_request.responseText)
+
+		},
+
+		direct_move_2(move) {
 
 			if (move === '64to74') {
 				lo('_var to emit=')
