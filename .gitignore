@@ -17,6 +17,8 @@ package-lock.json
 # Capacitor related directories and files
 /src-capacitor/www
 /src-capacitor/node_modules
+## Tom addition - this has changing 128.0.0.x address
+src-capacitor/capacitor.config.json
 
 # BEX related directories and files
 /src-bex/www
