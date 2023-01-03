@@ -89,6 +89,9 @@
 					Sign Up
 				</div>
 				<div v-else-if="online.user === 'logging_in'">
+					<p>
+						Tomek / pass + b / pass
+					</p>
 					<div class="login form">
 						<div class="input_with_label">
 							<div class="s_label">
@@ -195,13 +198,15 @@
 					</div>
 				</div>
 				<div v-else>
-
 					<div v-if="online.subscreen === 'user menu' ">
 						<div class="button" @click="new_online">
 							New Game
 						</div>
 						<div class="button" @click="continue_online">
 							Continue Game
+						</div>
+						<div class="button" @click="logout">
+							Log out
 						</div>
 					</div>
 
@@ -316,6 +321,9 @@ export default {
 		},
 		to_sign_up() {
 			this.online.user = 'signing_up'
+		},
+		logout() {
+			this.online.user = ''
 		},
 		debug() {
 			lo(this)

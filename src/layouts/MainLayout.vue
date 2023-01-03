@@ -43,30 +43,32 @@ export default defineComponent({
 		
 		firebase_messaging.onMessage((message) => {
 			console.log('📨 Message received')
-			let msg_body = fcm_body_to_object(message.notification.body)
+			console.log(message)
+			let msg_data = message.data
 			/* Example message to send:
 			
 				title: 
 				Move
 				
 				body:
-				
+				"It's your turn"
+
+				data: 
 				{
-					"inspiration": false,
-					"piece": {
-						"from_row":	7,
-						"from_col":	4,
-						"to_row":		6,
-						"to_col":		4,
-						"type":		"mortal",
-						"side":		2
-					}
+					current_player: 
+					"1"
+					game_id
+					: 
+					"22"
+					game_pass
+					: 
+					"10559"
 				}
 				
 			*/
 			switch (message.notification.title) {
 				case 'move':
-					bus.emit('move', msg_body)
+					bus.emit('move', msg_data)
 					break
 				default: { // {} to allow `let`
 					let alert_text = 'Unknown firebase message received: '+JSON.stringify(message.notification)
@@ -83,7 +85,7 @@ export default defineComponent({
     },
 })
 
-function fcm_body_to_object(string) {
+function fcm_string_to_object(string) {
 	
 	string.replace('\"', '"')
 	let object = JSON.parse(string)

@@ -20,7 +20,7 @@
                 <GameWorld :online_screen="1" :online="online" />
             </div>
         </div>
-        <OnlineSimulator/>
+        <!-- <OnlineSimulator/> -->
     </div>
 </q-page>
 </template>

@@ -2,7 +2,7 @@
 <q-page>
 	<div id="app">
         <Interface/>
-        <OnlineSimulator/>
+        <!-- <OnlineSimulator/> -->
     </div>
 </q-page>
 </template>
