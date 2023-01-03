@@ -82,6 +82,11 @@
 			</button>
 		</p>
 	</div>
+			<p>
+				<button @click="log_sotw">
+					Log SOTW
+				</button>
+			</p>
 </template>
 
 <script>
