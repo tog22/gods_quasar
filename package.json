@@ -1,9 +1,9 @@
 {
-  "name": "gods",
-  "version": "0.2",
+  "name": "quasar-clean-m1",
+  "version": "0.0.1",
   "description": "A richly strategic board game",
   "productName": "Gods",
-  "author": "togApps",
+  "author": "TogApps",
   "private": true,
   "scripts": {
     "lint": "eslint --ext .js,.vue ./",
@@ -12,7 +12,7 @@
   "dependencies": {
     "@quasar/extras": "^1.0.0",
     "core-js": "^3.6.5",
-    "firebase": "^8.10.1",
+    "firebase": "^9.16.0",
     "mitt": "^3.0.0",
     "quasar": "^2.6.0",
     "vue": "^3.0.0",
@@ -44,35 +44,5 @@
     "node": ">= 12.22.1",
     "npm": ">= 6.13.4",
     "yarn": ">= 1.21.1"
-  },
-  "eslintConfig": {
-    "root": true,
-    "env": {
-      "node": true
-    },
-    "extends": [
-      "plugin:vue/essential",
-      "eslint:recommended"
-    ],
-    "parserOptions": {
-      "parser": "babel-eslint"
-    },
-    "rules": {
-      "no-mixed-spaces-and-tabs": 0,
-      "no-unused-components": 0,
-      "no-unused-vars": 0,
-      "no-irregular-whitespace": 0,
-      "no-redeclare": 0,
-      "no-empty": 0,
-      "vue/no-unused-vars": 0,
-      "vue/no-unused-components": 0,
-      "vue/no-parsing-error": [
-        2,
-        {
-          "x-invalid-end-tag": false
-        }
-      ],
-      "no-trailing-spaces": 0
-    }
   }
 }

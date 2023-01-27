@@ -1,6 +1,6 @@
-# Quasar App (quasar-clean)
+# Gods (quasar-clean-m1)
 
-A Quasar Project
+A richly strategic board game
 
 ## Install the dependencies
 ```bash

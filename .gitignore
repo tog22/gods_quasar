@@ -2,6 +2,7 @@
 .thumbs.db
 node_modules
 package-lock.json
+yarn.lock
 
 
 # Quasar core related directories
@@ -17,6 +18,8 @@ package-lock.json
 # Capacitor related directories and files
 /src-capacitor/www
 /src-capacitor/node_modules
+## Tom additions
+/src-capacitor
 ## Tom addition - this has changing 128.0.0.x address
 src-capacitor/capacitor.config.json
 

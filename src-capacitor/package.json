@@ -1,11 +1,11 @@
 {
-  "name": "quasar-clean",
+  "name": "quasar-clean-m1",
   "version": "0.0.1",
-  "description": "A Quasar Project",
-  "author": "tog22 <tom.ash.github@philosofiles.com>",
+  "description": "A richly strategic board game",
+  "author": "TogApps",
   "private": true,
   "dependencies": {
-    "@capacitor/android": "^2.5.0",
+    "@capacitor/android": "2.5.0",
     "@capacitor/cli": "^2.0.0",
     "@capacitor/core": "^2.0.0"
   }
