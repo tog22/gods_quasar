@@ -11,7 +11,20 @@ import { defineComponent, provide } from 'vue';
 import store from '../store'
 import bus from '../supplements/bus'
 
-import firebase from 'firebase'
+/******************
+** Firebase load */
+
+// For capacitor-firebase:
+import { initializeApp } from 'firebase/app';
+import {
+  FirebaseMessaging,
+//   GetTokenOptions,
+//   Notification,
+} from '@capacitor-firebase/messaging';
+
+// For firebase 8+:
+// import firebase from 'firebase'
+// For firebase 9+:
 // import firebase from 'firebase/compat/app'
 
 export default defineComponent({
@@ -28,55 +41,69 @@ export default defineComponent({
 			projectId: "godsgamefbase",
 			storageBucket: "godsgamefbase.appspot.com",
 			messagingSenderId: "306649763697",
-			appId: "1:306649763697:web:228785d43cabe34913b0d0"
+			appId: "1:306649763697:web:228785d43cabe34913b0d0",
+			vapidKey: "BACyAFjs1KoHzgCkmXllHlmBBqj6yLbxcJSD4wjxjN-bJKl6zaWSevcaxkanK0RD05GJrPK-1yHodls6kGoaf4w"
 		};
 
-		firebase.initializeApp(firebaseConfig);
+		// firebase.initializeApp(firebaseConfig);
+		initializeApp(firebaseConfig)
 
-		let firebase_messaging = firebase.messaging()
+		FirebaseMessaging.removeAllListeners().then(() => {
+			FirebaseMessaging.addListener('tokenReceived', (message) => {
+				console.log(`tokenReceived`, { message });
+			});
+			FirebaseMessaging.addListener('notificationReceived', (message) => {
+				console.log(`notificationReceived`, { message });
+				console.log('📨 Message received')
+					console.log(message)
+					let msg_data = message.data
+					/* Example message to send:
+
+						title:
+						Move
+
+						body:
+						"It's your turn"
+
+						data:
+						{
+							current_player:
+							"1"
+							game_id
+							:
+							"22"
+							game_pass
+							:
+							"10559"
+						}
+
+					*/
+					switch (message.notification.title) {
+						case 'move':
+							bus.emit('move', msg_data)
+							break
+						default: { // {} to allow `let`
+							let alert_text = 'Unknown firebase message received: '+JSON.stringify(message.notification)
+							alert(alert_text)
+							break
+						}
+					}
+			});
+			FirebaseMessaging.addListener('notificationActionPerformed', (message) => {
+				console.log(`notificationActionPerformed`, { message });
+			});
+		});
+		
+		// let firebase_messaging = firebase.messaging()
+		let firebase_messaging = FirebaseMessaging
+
+		lo(firebase_messaging)
 
 		console.log('Firebase cloud messaging object', firebase_messaging)
 
 		const vapid_token = firebase_messaging.getToken({vapidKey: "BACyAFjs1KoHzgCkmXllHlmBBqj6yLbxcJSD4wjxjN-bJKl6zaWSevcaxkanK0RD05GJrPK-1yHodls6kGoaf4w"});
 		lo('FCM registration token to add to Firebase console test messaging = ')
 		lo(vapid_token)
-
-		firebase_messaging.onMessage((message) => {
-			console.log('📨 Message received')
-			console.log(message)
-			let msg_data = message.data
-			/* Example message to send:
-
-				title:
-				Move
-
-				body:
-				"It's your turn"
-
-				data:
-				{
-					current_player:
-					"1"
-					game_id
-					:
-					"22"
-					game_pass
-					:
-					"10559"
-				}
-
-			*/
-			switch (message.notification.title) {
-				case 'move':
-					bus.emit('move', msg_data)
-					break
-				default: { // {} to allow `let`
-					let alert_text = 'Unknown firebase message received: '+JSON.stringify(message.notification)
-					alert(alert_text)
-					break
-				}
-			}
-		})
 
         provide('store',store)
 
