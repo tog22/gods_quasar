@@ -56,7 +56,7 @@ export default defineComponent({
 				console.log(`notificationReceived`, { message });
 				console.log('📨 Message received')
 					console.log(message)
-					let msg_data = message.data
+					let msg_data = message.notification.data
 					/* Example message to send:
 
 						title:
