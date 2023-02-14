@@ -7,8 +7,7 @@
 </template>
 
 <script>
-import { defineComponent, provide } from 'vue';
-import store from '../store'
+import { defineComponent, inject } from 'vue';
 import bus from '../supplements/bus'
 
 /******************
@@ -30,6 +29,9 @@ import {
 export default defineComponent({
     name: 'MainLayout',
     setup () {
+
+		const store_parent = inject("store")
+		let store = store_parent.state
 
         ////////////////
         //    FIREBASE    //
@@ -101,11 +103,23 @@ export default defineComponent({
 
 		console.log('Firebase cloud messaging object', firebase_messaging)
 
-		const vapid_token = firebase_messaging.getToken({vapidKey: "BACyAFjs1KoHzgCkmXllHlmBBqj6yLbxcJSD4wjxjN-bJKl6zaWSevcaxkanK0RD05GJrPK-1yHodls6kGoaf4w"});
-		lo('FCM registration token to add to Firebase console test messaging = ')
-		lo(vapid_token)
+		let get_token = firebase_messaging.getToken({vapidKey: "BACyAFjs1KoHzgCkmXllHlmBBqj6yLbxcJSD4wjxjN-bJKl6zaWSevcaxkanK0RD05GJrPK-1yHodls6kGoaf4w"})
 
-        provide('store',store)
+		get_token.then(
+			function (result) {
+				
+				lo('FCM registration token to add to Firebase console test messaging = ')
+				lo(result.token)
+
+				var server_request = new XMLHttpRequest()
+
+				let get_url = 'http://gods.philosofiles.com/godcloud/?action=report_token&token='+this.result.token+'&user='+store.user;
+
+			},
+			function (error) {
+				lo('err getting token')
+			}
+		);
 
         return {
         }
