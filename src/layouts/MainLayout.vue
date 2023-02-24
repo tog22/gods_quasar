@@ -108,12 +108,20 @@ export default defineComponent({
 		get_token.then(
 			function (result) {
 				
+				store.token = result.token
+
 				lo('FCM registration token to add to Firebase console test messaging = ')
 				lo(result.token)
+				
+				if (store.logged_in) {
+					var server_request = new XMLHttpRequest()
 
-				var server_request = new XMLHttpRequest()
+					let get_url = 'http://gods.philosofiles.com/godcloud/?action=report_token&token='+result.token+'&user='+store.user;
+					lo(get_url);
 
-				let get_url = 'http://gods.philosofiles.com/godcloud/?action=report_token&token='+this.result.token+'&user='+store.user;
+					server_request.open("GET", get_url, false) // false = synchronous
+					server_request.send()
+				}
 
 			},
 			function (error) {

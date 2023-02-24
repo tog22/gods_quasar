@@ -92,6 +92,7 @@
 					<p>
 						Tomek / pass + b / pass
 					</p>
+					<!-- todo: convert this and signup to forms -->
 					<div class="login form">
 						<div class="input_with_label">
 							<div class="s_label">
@@ -264,6 +265,7 @@
 import 'src/assets/styles.css';
 import bus from 'src/supplements/bus.js'
 
+import { inject } from 'vue';
 
 import GameWorld from './GameWorld.vue';
 
@@ -324,6 +326,7 @@ export default {
 		},
 		logout() {
 			this.online.user = ''
+			// todo - remove token from db
 		},
 		debug() {
 			lo(this)
@@ -352,9 +355,14 @@ export default {
 			lo(response)
 
 			if (response.result === 'success') {
+				
 				this.online.user = user
+				this.store.user = user
 				this.online.userpass = pw
 				this.online.subscreen = 'user menu'
+
+				this.report_token(user, this.store.token)
+
 			} else if (response.result === "un or pw wrong") {
 				this.which_screen = 'show_selecting_online'
 				this.online.user = 'login_error'
@@ -389,8 +397,13 @@ export default {
 			lo(response)
 
 			if (response.result === 'success') {
+				
 				this.online.user = user
+				this.store.user = user
 				this.online.subscreen = 'user menu'
+
+				this.report_token(user, this.store.token)
+
 			} else if (response.result === "sql error") {
 				this.which_screen = 'show_selecting_online'
 				this.online.user = 'signup_error'
@@ -404,6 +417,15 @@ export default {
 				alert('other error')
 			}
 
+		},
+		report_token(user, token) {
+			var server_request = new XMLHttpRequest()
+
+			let get_url = 'http://gods.philosofiles.com/godcloud/?action=report_token&token='+result.token+'&user='+store.user;
+			lo(get_url);
+
+			server_request.open("GET", get_url, false) // false = synchronous
+			server_request.send()
 		},
 		new_online() {
 			this.online.subscreen = 'select opponent'
@@ -503,12 +525,14 @@ export default {
 		
 		****************/
 
+		const store_parent = inject("store")
 
 		return {
-			which_screen: 'show_selecting_online',
+			store:			store_parent.state,
+			which_screen: 	'show_selecting_online',
 			// ↑ Options: show_menu/show_selecting_online/show_online/show_pnp/show_end
-			game_type: 'pnp', // pnp/online
-			win_type: null,
+			game_type: 		'pnp', // pnp/online
+			win_type: 		null,
 			victory_or_defeat: '',
 			type_of_victory: '',
 			online: {
@@ -525,16 +549,7 @@ export default {
 				login_error: null,
 				signup_error: null,
 				has_current_games: true, // todo, low: set
-				games: [
-					/*
-					{
-						opponent: 'Mel',
-						id: 21,
-						game_pass: 21449,
-						side: 1
-					}
-					*/
-				]
+				games: [] // gets set in continue_online()
 			}
 		}
 	},

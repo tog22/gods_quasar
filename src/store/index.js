@@ -11,7 +11,8 @@ var store_parent // What'll get exported
 
 const default_state = {
 	"logged_in": 	true,
-	"user":			"Tomek"
+	"user":			"Tomek",
+	"token":		'unset'
 }
 
 const getdefault_state = () => {

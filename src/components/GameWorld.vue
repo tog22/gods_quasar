@@ -35,8 +35,9 @@
 <script>
 import 'src/assets/styles.css';
 import tog from 'src/libraries/tog.js'
-
 import  bus  from 'src/supplements/bus.js'
+
+import { inject } from 'vue';
 
 import Square from './Square.vue';
 
@@ -786,7 +787,7 @@ export default {
 
 			var server_request = new XMLHttpRequest()
 
-			let get_url = 'http://gods.philosofiles.com/godcloud/?action=update&game='+this.online.game_id+'&pw='+this.online.game_pass+'&turn='+this.turn+'&current_player='+this.current_player+'&winner='+this.winner+'&win_type='+this.win_type+'&sotw='+JSON.stringify(this.sotw);
+			let get_url = 'http://gods.philosofiles.com/godcloud/?action=update&game='+this.online.game_id+'&pw='+this.online.game_pass+'&turn='+this.turn+'&current_player='+this.current_player+'&sending_player_name='+this.store.user+'&winner='+this.winner+'&win_type='+this.win_type+'&sotw='+JSON.stringify(this.sotw);
 
 			lo(get_url)
 
@@ -909,6 +910,8 @@ export default {
 	data() {
 		{
 
+			const store_parent = inject("store")
+			
 			var turn
 			var sotw
 			var current_player
@@ -1656,6 +1659,7 @@ export default {
 			}
 
 			return {
+				store:					store_parent.state,
 				turn: 					turn,
 				current_player: 		current_player,
 				piece_has_moved: 		false,
