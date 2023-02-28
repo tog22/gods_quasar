@@ -98,10 +98,8 @@ export default defineComponent({
 		
 		// let firebase_messaging = firebase.messaging()
 		let firebase_messaging = FirebaseMessaging
-
-		lo(firebase_messaging)
-
-		console.log('Firebase cloud messaging object', firebase_messaging)
+		// lo(firebase_messaging)
+		// console.log('Firebase cloud messaging object', firebase_messaging)
 
 		let get_token = firebase_messaging.getToken({vapidKey: "BACyAFjs1KoHzgCkmXllHlmBBqj6yLbxcJSD4wjxjN-bJKl6zaWSevcaxkanK0RD05GJrPK-1yHodls6kGoaf4w"})
 
@@ -110,7 +108,7 @@ export default defineComponent({
 				
 				store.token = result.token
 
-				lo('FCM registration token to add to Firebase console test messaging = ')
+				lo('FCM registration token:')
 				lo(result.token)
 				
 				if (store.logged_in) {
