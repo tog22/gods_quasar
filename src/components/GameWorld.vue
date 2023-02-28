@@ -789,11 +789,9 @@ export default {
 
 			let get_url = 'http://gods.philosofiles.com/godcloud/?action=update&game='+this.online.game_id+'&pw='+this.online.game_pass+'&turn='+this.turn+'&current_player='+this.current_player+'&sending_player_name='+this.store.user+'&winner='+this.winner+'&win_type='+this.win_type+'&sotw='+JSON.stringify(this.sotw);
 
-			lo(get_url)
-
 			server_request.open("GET", get_url, false) // false = synchronous
 			server_request.send()
-			lo('response to ?update:')
+			lo('🔄 Sending update. Response =')
 			lo(server_request.responseText)
 
 		},

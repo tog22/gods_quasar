@@ -199,6 +199,7 @@
 					</div>
 				</div>
 				<div v-else>
+					
 					<div v-if="online.subscreen === 'user menu' ">
 						<div class="button" @click="new_online">
 							New Game
@@ -253,6 +254,10 @@
 
 					</div>
 
+					<div v-else>
+						Error: no recognised online.subscreen set
+					</div>
+
 				</div>
 			</div>
 		</div>
@@ -292,6 +297,7 @@ export default {
 			this.back_after_end_game()
 		},
 		back_within_selecting_online() {
+			
 			switch (this.online.subscreen) {
 				case 'login or signup':
 				case 'user menu':
@@ -306,17 +312,17 @@ export default {
 					break
 			}
 
-			console.log(this)
 			if (this.online.user === 'logging_in' || this.online.user === 'signing_up') {
 				this.online.user = ''
 			}
+
 		},
 		back_from_online() {
 			this.which_screen =  'show_selecting_online'
 		},
 		online_games() {
 			this.which_screen =  'show_selecting_online'
-			this.online.subscreen = 'login or signup'
+			this.online.subscreen = 'user menu' // is this right? was 'login or signup'
 		},
 		to_log_in() {
 			this.online.user = 'logging_in'
@@ -421,7 +427,7 @@ export default {
 		report_token(user, token) {
 			var server_request = new XMLHttpRequest()
 
-			let get_url = 'http://gods.philosofiles.com/godcloud/?action=report_token&token='+result.token+'&user='+store.user;
+			let get_url = 'http://gods.philosofiles.com/godcloud/?action=report_token&token='+this.store.token+'&user='+user;
 			lo(get_url);
 
 			server_request.open("GET", get_url, false) // false = synchronous
