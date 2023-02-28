@@ -25,6 +25,9 @@
 								End Turn
 							</div>
 						</div>
+						<div class="s_item" @click="end_turn">
+							🇹🇰
+						</div>
 					</div>
 				</div>
 			</div>
