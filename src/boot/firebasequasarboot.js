@@ -1,3 +1,8 @@
+/*
+    This is loaded in /quasar.config.js
+    But it's currently commented out there because I'm using the @capawesome-team/capacitor-firebase plugin instead. 
+*/
+
 import { boot } from 'quasar/wrappers'
 import bus from '../supplements/bus'
 

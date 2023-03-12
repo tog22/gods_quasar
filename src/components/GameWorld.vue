@@ -17,6 +17,12 @@
 			<div id="bz_content">
 				<div id="info_bar">
 					<div id="item_flex_container">
+						<div class="s_item piece" @click="end_turn">
+							♟
+						</div>
+						<div class="s_item inspiration" @click="end_turn">
+							⚡️
+						</div>
 						<div class="current_player s_item">
 							<span v-html="current_player_image"></span>
 						</div>
