@@ -799,7 +799,7 @@ export default {
 
 			var server_request = new XMLHttpRequest()
 
-			let get_url = 'http://gods.philosofiles.com/godcloud/?action=update&game='+this.online.game_id+'&pw='+this.online.game_pass+'&turn='+this.turn+'&current_player='+this.current_player+'&sending_player_name='+this.store.user+'&winner='+this.winner+'&win_type='+this.win_type+'&sotw='+JSON.stringify(this.sotw);
+			let get_url = 'http://godcloud.philosofiles.com/?action=update&game='+this.online.game_id+'&pw='+this.online.game_pass+'&turn='+this.turn+'&current_player='+this.current_player+'&sending_player_name='+this.store.user+'&winner='+this.winner+'&win_type='+this.win_type+'&sotw='+JSON.stringify(this.sotw);
 
 			server_request.open("GET", get_url, false) // false = synchronous
 			server_request.send()
@@ -830,7 +830,7 @@ export default {
 
 			var server_request = new XMLHttpRequest()
 
-			let get_url = 'http://gods.philosofiles.com/godcloud/?action=get&game='+game_id+'&pw='+game_pass
+			let get_url = 'http://godcloud.philosofiles.com/?action=get&game='+game_id+'&pw='+game_pass
 
 			server_request.open("GET", get_url, false) // false = synchronous
 			server_request.send()
@@ -930,7 +930,7 @@ export default {
 
 				var server_request = new XMLHttpRequest()
 
-				let get_url = 'http://gods.philosofiles.com/godcloud/?action=get&game='+this.online.game_id+'&pw='+this.online.game_pass
+				let get_url = 'http://godcloud.philosofiles.com/?action=get&game='+this.online.game_id+'&pw='+this.online.game_pass
 				lo(get_url)
 
 				server_request.open("GET", get_url, false) // false = synchronous

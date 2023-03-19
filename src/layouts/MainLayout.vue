@@ -114,7 +114,7 @@ export default defineComponent({
 				if (store.logged_in) {
 					var server_request = new XMLHttpRequest()
 
-					let get_url = 'http://gods.philosofiles.com/godcloud/?action=report_token&token='+result.token+'&user='+store.user;
+					let get_url = 'http://godcloud.philosofiles.com/?action=report_token&token='+result.token+'&user='+store.user;
 					lo(get_url);
 
 					server_request.open("GET", get_url, false) // false = synchronous

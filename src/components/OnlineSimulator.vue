@@ -142,7 +142,7 @@ export default {
 
 			var server_request = new XMLHttpRequest()
 
-			let get_url = 'http://gods.philosofiles.com/godcloud/?action=update&game=22&pw=10559&turn=3&current_player=1&winner=null&win_type=null&sotw='+JSON.stringify(sotw);
+			let get_url = 'http://godcloud.philosofiles.com/?action=update&game=22&pw=10559&turn=3&current_player=1&winner=null&win_type=null&sotw='+JSON.stringify(sotw);
 
 			lo(get_url)
 

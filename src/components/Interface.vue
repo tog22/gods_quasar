@@ -351,7 +351,7 @@ export default {
 
 			var server_request = new XMLHttpRequest()
 
-			let get_url = 'http://gods.philosofiles.com/godcloud/?action=login&username='+user+'&pw='+pw
+			let get_url = 'http://godcloud.philosofiles.com/?action=login&username='+user+'&pw='+pw
 			//lo(get_url)
 
 			server_request.open("GET", get_url, false)
@@ -393,7 +393,7 @@ export default {
 
 			var server_request = new XMLHttpRequest()
 
-			let get_url = 'http://gods.philosofiles.com/godcloud/?action=signup&username='+user+'&pw='+pw
+			let get_url = 'http://godcloud.philosofiles.com/?action=signup&username='+user+'&pw='+pw
 			//lo(get_url)
 
 			server_request.open("GET", get_url, false)
@@ -427,7 +427,7 @@ export default {
 		report_token(user, token) {
 			var server_request = new XMLHttpRequest()
 
-			let get_url = 'http://gods.philosofiles.com/godcloud/?action=report_token&token='+this.store.token+'&user='+user;
+			let get_url = 'http://godcloud.philosofiles.com/?action=report_token&token='+this.store.token+'&user='+user;
 			lo(get_url);
 
 			server_request.open("GET", get_url, false) // false = synchronous
@@ -441,7 +441,7 @@ export default {
 			var opp = document.getElementById('newg_opponent').value
 			var server_request = new XMLHttpRequest()
 
-			let get_url = 'http://gods.philosofiles.com/godcloud/?action=find_user&user='+opp
+			let get_url = 'http://godcloud.philosofiles.com/?action=find_user&user='+opp
 			lo(get_url)
 
 			server_request.open("GET", get_url, false)
@@ -456,7 +456,7 @@ export default {
 				let pw = Math.floor(Math.random() * 32000)
 
 				server_request = new XMLHttpRequest()
-				get_url = 'http://gods.philosofiles.com/godcloud/?action=create&pw='+pw+'&p1='+this.online.user+'&p2='+opp
+				get_url = 'http://godcloud.philosofiles.com/?action=create&pw='+pw+'&p1='+this.online.user+'&p2='+opp
 
 				server_request.open("GET", get_url, false)
 				server_request.send()
