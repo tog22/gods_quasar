@@ -81,6 +81,23 @@
         color: white;
     }
 
+	.s_item {
+		position: relative;
+		font-size: 0.875rem; /* 0.875 = 14/16 (16px being the default base size on the html{} selector */
+
+		.s_badge {
+			position: absolute;
+			bottom: 3px;
+			right: 3px;
+			font-size: 0.571em;
+		}
+
+		&.inspiration {
+			font-size: 0.72em;
+		}
+		
+	}
+
     .piece.s_item,
     .inspiration.s_item {
         width: 25px;

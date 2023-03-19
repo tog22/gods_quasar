@@ -20,8 +20,11 @@
 						<div class="s_item piece" @click="end_turn">
 							♟
 						</div>
-						<div class="s_item inspiration" @click="end_turn">
+						<div class="s_item inspiration moved" @click="end_turn">
 							⚡️
+							<div class="s_badge">
+								🔓
+							</div>
 						</div>
 						<div class="current_player s_item">
 							<span v-html="current_player_image"></span>
