@@ -481,7 +481,7 @@ export default {
 		continue_online() {
 
 			let server_request = new XMLHttpRequest()
-			let get_url = 'https://gods.philosofiles.com/godcloud/?action=list_games&username='+this.online.user+'&userpass='+this.online.userpass
+			let get_url = 'https://godcloud.philosofiles.com/?action=list_games&username='+this.online.user+'&userpass='+this.online.userpass
 			lo(get_url)
 
 			server_request.open("GET", get_url, false)

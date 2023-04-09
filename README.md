@@ -1,4 +1,4 @@
-# Gods (quasar-clean-m1)
+# Gods Quasar
 
 A richly strategic board game
 
